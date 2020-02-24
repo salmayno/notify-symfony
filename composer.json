@@ -1,0 +1,12 @@
+{
+    "name": "yoeunes/notify-symfony",
+    "license": "MIT",
+    "require": {
+        "yoeunes/notify": "@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Yoeunes\\Notify\\Symfony\\": "src"
+        }
+    }
+}

@@ -1,0 +1,27 @@
+services:
+    notify.session:
+        class: Yoeunes\Notify\Symfony\Session\Session
+        arguments:
+            - '@session'
+
+    notify.config:
+        class: Yoeunes\Notify\Symfony\Config\Config
+        arguments:
+            - []
+
+    notify:
+        class: Yoeunes\Notify\NotifyManager
+        arguments:
+            - '@notify.config'
+
+    notify.twig_extension:
+        class: Yoeunes\Notify\Symfony\Twig\NotifyExtension
+        arguments:
+            - '@notify'
+        public: false
+        tags:
+            - { name: twig.extension }
+
+    Yoeunes\Notify\Symfony\Session\Session: '@notify.session'
+    Yoeunes\Notify\Symfony\Config\Config: '@notify.config'
+    Yoeunes\Notify\NotifyManager: '@notify'
