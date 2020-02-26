@@ -30,11 +30,7 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('notifiers')
                     ->ignoreExtraKeys(false)
                     ->useAttributeAsKey('notifier')
-                    ->prototype('array')
-                        ->isRequired()
-                        ->ignoreExtraKeys(false)
-                        ->performNoDeepMerging()
-                    ->end()
+                    ->prototype('variable')->end()
                 ->end()
             ->end()
         ;
