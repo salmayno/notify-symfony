@@ -14,7 +14,14 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('notify');
 
-        $treeBuilder->getRootNode()
+        if (\method_exists($treeBuilder, 'getRootNode')) {
+            $rootNode = $treeBuilder->getRootNode();
+        } else {
+            // BC layer for symfony/config 4.1 and older
+            $rootNode = $treeBuilder->root('notify');
+        }
+
+        $rootNode
             ->children()
                 ->scalarNode('default')
                     ->cannotBeEmpty()
@@ -23,7 +30,7 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('notifiers')
                     ->ignoreExtraKeys(false)
                     ->useAttributeAsKey('notifier')
-                    ->arrayPrototype()
+                    ->prototype('array')
                         ->isRequired()
                         ->ignoreExtraKeys(false)
                         ->performNoDeepMerging()
