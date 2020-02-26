@@ -4,7 +4,7 @@
     "description": "Symfony Notify Bundle",
     "license": "MIT",
     "require": {
-        "yoeunes/notify": "@dev"
+        "yoeunes/notify": "v2.x-dev"
     },
     "autoload": {
         "psr-4": {
