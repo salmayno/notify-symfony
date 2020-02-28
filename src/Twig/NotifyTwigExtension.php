@@ -6,7 +6,7 @@ use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 use Yoeunes\Notify\NotifyManager;
 
-class NotifyExtension extends AbstractExtension
+class NotifyTwigExtension extends AbstractExtension
 {
     private $manager;
 

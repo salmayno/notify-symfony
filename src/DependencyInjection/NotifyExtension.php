@@ -6,6 +6,7 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Yoeunes\Notify\Symfony\Config\Config;
 
 class NotifyExtension extends Extension
 {
@@ -20,8 +21,9 @@ class NotifyExtension extends Extension
         $loader->load('services.yaml');
 
         $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
 
-        $config = $container->getDefinition('notify.config');
-        $config->replaceArgument(0, $this->processConfiguration($configuration, $configs));
+        $manager = $container->getDefinition('notify');
+        $manager->replaceArgument(0, new Config($config));
     }
 }

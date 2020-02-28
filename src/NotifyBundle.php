@@ -13,6 +13,6 @@ class NotifyBundle extends Bundle
      */
     public function build(ContainerBuilder $container)
     {
-        $container->addCompilerPass(new NotifierCompilerPass());
+//        $container->addCompilerPass(new NotifierCompilerPass());
     }
 }
