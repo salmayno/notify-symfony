@@ -6,7 +6,7 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
-class NotifierCompilerPass implements CompilerPassInterface
+final class NotifierCompilerPass implements CompilerPassInterface
 {
     /**
      * @inheritDoc
@@ -22,10 +22,10 @@ class NotifierCompilerPass implements CompilerPassInterface
 
         foreach ($container->findTaggedServiceIds('notify.notifier') as $id => $tags) {
             foreach ($tags as $attributes) {
-                $manager->addMethodCall('extend', [
+                $manager->addMethodCall('extend', array(
                     $attributes['alias'],
                     new Reference($id)
-                ]);
+                ));
             }
         }
     }

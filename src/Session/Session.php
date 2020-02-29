@@ -2,10 +2,10 @@
 
 namespace Yoeunes\Notify\Symfony\Session;
 
-use Symfony\Component\HttpFoundation\Session\SessionInterface as SymfonySessionInterface;
 use Yoeunes\Notify\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\Session\Session as SymfonySessionInterface;
 
-class Session implements SessionInterface
+final class Session implements SessionInterface
 {
     private $session;
 
@@ -21,6 +21,6 @@ class Session implements SessionInterface
 
     public function flash($key, $value)
     {
-        return $this->session->flash($key, $value);
+        return $this->session->getFlashBag()->add($key, $value);
     }
 }

@@ -5,7 +5,7 @@ services:
             - null
 
     notify.twig_extension:
-        class: Yoeunes\Notify\Symfony\Twig\NotifyExtension
+        class: Yoeunes\Notify\Symfony\Twig\NotifyTwigExtension
         arguments:
             - '@notify'
         public: false

@@ -4,8 +4,11 @@ namespace Yoeunes\Notify\Symfony\Config;
 
 use Yoeunes\Notify\Config\ConfigInterface;
 
-class Config implements ConfigInterface
+final class Config implements ConfigInterface
 {
+    /**
+     * @var array<string, mixed>
+     */
     private $config;
 
     public function __construct($config)

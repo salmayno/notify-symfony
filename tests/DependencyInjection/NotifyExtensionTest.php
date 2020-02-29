@@ -7,7 +7,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Yoeunes\Notify\Symfony\DependencyInjection\NotifyExtension;
 use Yoeunes\Notify\Symfony\NotifyBundle;
 
-class NotifyExtensionTest extends TestCase
+final class NotifyExtensionTest extends TestCase
 {
     public function testContainContainNotifyService()
     {
@@ -36,10 +36,9 @@ class NotifyExtensionTest extends TestCase
         $this->assertInstanceOf('Yoeunes\Notify\Config\ConfigInterface', $config);
     }
 
-    protected function getRawContainer()
+    private function getRawContainer()
     {
         $container = new ContainerBuilder();
-//        $container->setParameter('kernel.debug', false);
 
         $extension = new NotifyExtension();
         $container->registerExtension($extension);
@@ -54,7 +53,7 @@ class NotifyExtensionTest extends TestCase
         return $container;
     }
 
-    protected function getContainer()
+    private function getContainer()
     {
         $container = $this->getRawContainer();
         $container->compile();

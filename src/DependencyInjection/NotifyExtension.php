@@ -8,7 +8,7 @@ use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Yoeunes\Notify\Symfony\Config\Config;
 
-class NotifyExtension extends Extension
+final class NotifyExtension extends Extension
 {
     /**
      * @inheritDoc

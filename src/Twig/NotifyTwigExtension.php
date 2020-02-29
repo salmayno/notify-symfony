@@ -6,7 +6,7 @@ use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 use Yoeunes\Notify\NotifyManager;
 
-class NotifyTwigExtension extends AbstractExtension
+final class NotifyTwigExtension extends AbstractExtension
 {
     private $manager;
 
@@ -17,7 +17,7 @@ class NotifyTwigExtension extends AbstractExtension
 
     public function getFunctions()
     {
-        $options = ['is_safe' => ['html']];
+        $options = array('is_safe' => array('html'));
 
         return array(
             new TwigFunction('notify_render', array($this, 'notifyRender'), $options),
