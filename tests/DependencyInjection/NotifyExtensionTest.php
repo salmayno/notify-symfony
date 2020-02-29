@@ -25,8 +25,8 @@ final class NotifyExtensionTest extends TestCase
             'default_notifier' => array(
                 'scripts' => array('jquery.js', 'notify.js'),
                 'styles' => array('bootstrap.css', 'notify.css'),
-                'options' => array()
-            )
+                'options' => array(),
+            ),
         )));
         $container->compile();
 

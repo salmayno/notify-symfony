@@ -11,7 +11,7 @@ use Yoeunes\Notify\Symfony\Config\Config;
 final class NotifyExtension extends Extension
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      *
      * @throws \Exception
      */

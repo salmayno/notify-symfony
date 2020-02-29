@@ -9,7 +9,7 @@ use Symfony\Component\DependencyInjection\Reference;
 final class NotifierCompilerPass implements CompilerPassInterface
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function process(ContainerBuilder $container)
     {
@@ -24,7 +24,7 @@ final class NotifierCompilerPass implements CompilerPassInterface
             foreach ($tags as $attributes) {
                 $manager->addMethodCall('extend', array(
                     $attributes['alias'],
-                    new Reference($id)
+                    new Reference($id),
                 ));
             }
         }

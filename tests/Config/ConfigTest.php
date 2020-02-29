@@ -15,11 +15,11 @@ class ConfigTest extends TestCase
                 'styles' => array('notifier.css'),
                 'options' => array(
                     'css_classes' => array(
-                        'success' => 'primary'
-                    )
-                )
-            )
-        )
+                        'success' => 'primary',
+                    ),
+                ),
+            ),
+        ),
     );
 
     public function test_simple_get()

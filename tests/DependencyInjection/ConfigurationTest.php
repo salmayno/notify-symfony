@@ -23,9 +23,9 @@ final class ConfigurationTest extends TestCase
             'notifiers' => array(
                 'tailwind' => array(
                     'notifier' => 'nice',
-                    'scripts' => array('jquery.js')
-                )
-            )
+                    'scripts' => array('jquery.js'),
+                ),
+            ),
         )));
 
         $this->assertEquals('tailwind', $config['default']);
