@@ -55,10 +55,17 @@ matrix:
         -   php: 7.2
             dist: precise
             env: SYMFONY_VERSION='5.0.*'
+        -   php: 7.2
+            dist: precise
+            env: SYMFONY_VERSION='dev-master'
+    allow_failures:
+        -   env: STABILITY="dev"
 
 before_install:
     - phpenv config-rm xdebug.ini
-    - if [ "$SYMFONY_VERSION" != "" ]; then composer --no-update require symfony/symfony:${SYMFONY_VERSION}; fi;
+    - if ! [ -z "$STABILITY" ]; then composer config minimum-stability ${STABILITY}; fi;
+    - if ! [ -z "$SYMFONY_VERSION" ]; then composer --no-update require symfony/symfony:${SYMFONY_VERSION}; fi;
+    - if ! [ -z "$SYMFONY_VERSION" ]; then composer config extra.symfony.require "${SYMFONY_VERSION}"; fi;
 
 install:
     - composer update --prefer-dist --no-interaction
