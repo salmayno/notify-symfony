@@ -32,10 +32,12 @@ final class ConfigurationTest extends TestCase
         $this->assertEquals('jquery.js', $config['notifiers']['tailwind']['scripts'][0]);
     }
 
+    /**
+     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage The path "notify.default" cannot contain an empty value, but got "".
+     */
     public function test_empty_default_notifier()
     {
-        $this->setExpectedException('Symfony\Component\Config\Definition\Exception\InvalidConfigurationException', 'The path "notify.default" cannot contain an empty value, but got "".');
-
         $this->process(array(array('default' => '')));
     }
 
