@@ -1,6 +1,6 @@
 <?php
 
-namespace DependencyInjection;
+namespace Yoeunes\Notify\Symfony\Tests\DependencyInjection;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -9,7 +9,7 @@ use Yoeunes\Notify\Symfony\NotifyBundle;
 
 final class NotifyExtensionTest extends TestCase
 {
-    public function testContainContainNotifyService()
+    public function test_contain_contain_notify_service()
     {
         $container = $this->getRawContainer();
         $container->loadFromExtension('notify', array());
