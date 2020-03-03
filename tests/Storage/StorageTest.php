@@ -14,14 +14,11 @@ class StorageTest extends TestCase
         $session = new Storage(new Session(new MockArraySessionStorage()));
 
         $session->flash('notifications', array('type' => 'success', 'title' => 'success title'));
-        $session->flash('notifications', array('type' => 'info', 'title' => 'success info'));
+        $this->assertEquals(array('type' => 'success', 'title' => 'success title'), $session->get('notifications'));
 
-        $this->assertEquals(
-            array(
-                array('type' => 'success', 'title' => 'success title'),
-                array('type' => 'info', 'title' => 'success info'),
-            ),
-            $session->get('notifications')
-        );
+        $session->flash('notifications', array('type' => 'info', 'title' => 'info title'));
+        $this->assertEquals(array('type' => 'info', 'title' => 'info title'), $session->get('notifications'));
+
+        $this->assertEquals(array(), $session->get('notifications'));
     }
 }

@@ -21,6 +21,6 @@ final class Storage implements StorageInterface
 
     public function flash($key, $value)
     {
-        return $this->session->getFlashBag()->add($key, $value);
+        $this->session->getFlashBag()->set($key, $value);
     }
 }
