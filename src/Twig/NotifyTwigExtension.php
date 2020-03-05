@@ -4,13 +4,13 @@ namespace Yoeunes\Notify\Symfony\Twig;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
-use Yoeunes\Notify\NotifyManager;
+use Yoeunes\Notify\NotifyManagerInterface;
 
 final class NotifyTwigExtension extends AbstractExtension
 {
     private $manager;
 
-    public function __construct(NotifyManager $manager)
+    public function __construct(NotifyManagerInterface $manager)
     {
         $this->manager = $manager;
     }
