@@ -43,7 +43,7 @@ class NotifyTwigExtensionTest extends TestCase
     private function render($template, NotifyManagerInterface $manager)
     {
         $twig = new Environment(new ArrayLoader(array('template' => $template)), array(
-            'debug' => true, 'cache' => false, 'autoescape' => 'html', 'optimizations' => 0
+            'debug' => true, 'cache' => false, 'autoescape' => 'html', 'optimizations' => 0,
         ));
 
         $twig->addExtension(new NotifyTwigExtension($manager));
