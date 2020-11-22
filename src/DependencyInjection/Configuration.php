@@ -1,6 +1,6 @@
 <?php
 
-namespace Yoeunes\Notify\Symfony\DependencyInjection;
+namespace Notify\Symfony\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -27,9 +27,17 @@ final class Configuration implements ConfigurationInterface
                     ->cannotBeEmpty()
                     ->defaultValue('basic')
                 ->end()
-                ->arrayNode('notifiers')
+                ->arrayNode('adapters')
                     ->ignoreExtraKeys(false)
-                    ->useAttributeAsKey('notifier_name')
+                    ->useAttributeAsKey('name')
+                    ->prototype('variable')->end()
+                ->end()
+                ->arrayNode('stamps_middlewares')
+                    ->ignoreExtraKeys(false)
+                    ->prototype('variable')->end()
+                ->end()
+                ->arrayNode('stamps_middlewares')
+                    ->ignoreExtraKeys(false)
                     ->prototype('variable')->end()
                 ->end()
             ->end()

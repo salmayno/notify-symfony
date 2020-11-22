@@ -1,28 +1,28 @@
 <?php
 
-namespace Yoeunes\Notify\Symfony\DependencyInjection\Compiler;
+namespace Notify\Symfony\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
-final class NotifierCompilerPass implements CompilerPassInterface
+final class FilterCompilerPass implements CompilerPassInterface
 {
     /**
      * {@inheritdoc}
      */
     public function process(ContainerBuilder $container)
     {
-        if (!$container->has('notify')) {
+        if (!$container->has('notify.filter')) {
             return;
         }
 
-        /** @var \Yoeunes\Notify\NotifyManager $manager */
-        $manager = $container->findDefinition('notify');
+        /** @var \Notify\Filter\FilterManager $manager */
+        $manager = $container->findDefinition('notify.filter');
 
-        foreach ($container->findTaggedServiceIds('notify.notifier') as $id => $tags) {
+        foreach ($container->findTaggedServiceIds('notify.filter') as $id => $tags) {
             foreach ($tags as $attributes) {
-                $manager->addMethodCall('extend', array(
+                $manager->addMethodCall('addDriver', array(
                     $attributes['alias'],
                     new Reference($id),
                 ));

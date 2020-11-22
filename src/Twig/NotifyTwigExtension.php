@@ -1,18 +1,19 @@
 <?php
 
-namespace Yoeunes\Notify\Symfony\Twig;
+namespace Notify\Symfony\Twig;
 
+use Notify\Presenter\Html\HtmlPresenter;
+use Notify\Presenter\PresenterManager;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
-use Yoeunes\Notify\NotifyManagerInterface;
 
 final class NotifyTwigExtension extends AbstractExtension
 {
-    private $manager;
+    private $htmlPresenter;
 
-    public function __construct(NotifyManagerInterface $manager)
+    public function __construct(HtmlPresenter $htmlPresenter)
     {
-        $this->manager = $manager;
+        $this->htmlPresenter = $htmlPresenter;
     }
 
     public function getFunctions()
@@ -21,23 +22,16 @@ final class NotifyTwigExtension extends AbstractExtension
 
         return array(
             new TwigFunction('notify_render', array($this, 'notifyRender'), $options),
-            new TwigFunction('notify_css', array($this, 'notifyCss'), $options),
-            new TwigFunction('notify_js', array($this, 'notifyJs'), $options),
         );
     }
 
-    public function notifyRender()
+    /**
+     * @param string|array $criteria
+     *
+     * @return string
+     */
+    public function notifyRender($criteria = null)
     {
-        return $this->manager->render();
-    }
-
-    public function notifyCss()
-    {
-        return $this->manager->renderStyles();
-    }
-
-    public function notifyJs()
-    {
-        return $this->manager->renderScripts();
+        return $this->htmlPresenter->render($criteria);
     }
 }

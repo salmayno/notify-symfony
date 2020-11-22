@@ -1,12 +1,12 @@
 <?php
 
-namespace Yoeunes\Notify\Symfony\DependencyInjection;
+namespace Notify\Symfony\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
-use Yoeunes\Notify\Symfony\Config\Config;
+use Notify\Symfony\Config\Config;
 
 final class NotifyExtension extends Extension
 {
@@ -23,7 +23,10 @@ final class NotifyExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $manager = $container->getDefinition('notify');
-        $manager->replaceArgument(0, new Config($config));
+        $notifyConfig = $container->getDefinition('notify.config');
+        $notifyConfig->replaceArgument(0, $config);
+
+        $notifyMiddleware = $container->getDefinition('notify.middleware');
+        $notifyConfig->replaceArgument(0, $config);
     }
 }

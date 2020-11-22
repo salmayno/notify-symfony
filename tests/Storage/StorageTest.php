@@ -1,11 +1,11 @@
 <?php
 
-namespace Yoeunes\Notify\Symfony\Tests\Storage;
+namespace Notify\Symfony\Tests\Storage;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
-use Yoeunes\Notify\Symfony\Storage\Storage;
+use Notify\Symfony\Storage\Storage;
 
 class StorageTest extends TestCase
 {

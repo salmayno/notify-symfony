@@ -1,12 +1,12 @@
 <?php
 
-namespace Yoeunes\Notify\Symfony\Tests\Twig;
+namespace Notify\Symfony\Tests\Twig;
 
 use PHPUnit\Framework\TestCase;
 use Twig\Environment;
 use Twig\Loader\ArrayLoader;
-use Yoeunes\Notify\NotifyManagerInterface;
-use Yoeunes\Notify\Symfony\Twig\NotifyTwigExtension;
+use Notify\NotifyManagerInterface;
+use Notify\Symfony\Twig\NotifyTwigExtension;
 
 class NotifyTwigExtensionTest extends TestCase
 {

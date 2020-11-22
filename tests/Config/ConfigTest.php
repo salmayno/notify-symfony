@@ -1,9 +1,9 @@
 <?php
 
-namespace Yoeunes\Notify\Symfony\Tests\Config;
+namespace Notify\Symfony\Tests\Config;
 
 use PHPUnit\Framework\TestCase;
-use Yoeunes\Notify\Symfony\Config\Config;
+use Notify\Symfony\Config\Config;
 
 class ConfigTest extends TestCase
 {

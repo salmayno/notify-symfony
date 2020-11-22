@@ -1,10 +1,10 @@
 <?php
 
-namespace Yoeunes\Notify\Symfony\Tests\DependencyInjection;
+namespace Notify\Symfony\Tests\DependencyInjection;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\Definition\Processor;
-use Yoeunes\Notify\Symfony\DependencyInjection\Configuration;
+use Notify\Symfony\DependencyInjection\Configuration;
 
 final class ConfigurationTest extends TestCase
 {

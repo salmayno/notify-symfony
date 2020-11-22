@@ -1,7 +1,7 @@
 {
-    "name": "yoeunes/notify-symfony",
+    "name": "php-notify/notify-symfony",
     "type": "symfony-bundle",
-    "description": "Symfony Notify Bundle for yoeunes/notify",
+    "description": "Symfony Notify Bundle for php-notify/notify",
     "keywords": [
         "yoeunes",
         "notify",
@@ -17,7 +17,7 @@
         "bundle",
         "flex"
     ],
-    "homepage": "https://github.com/yoeunes/notify-symfony",
+    "homepage": "https://github.com/php-notify/notify-symfony",
     "authors": [
         {
             "name": "Younes Khoubza",
@@ -29,7 +29,7 @@
     "license": "MIT",
     "require": {
         "php": ">=5.3",
-        "yoeunes/notify": "v2.x-dev",
+        "php-notify/notify": "dev-master",
         "symfony/config": "^2.1|^3.0|^4.0|^5.0",
         "symfony/dependency-injection": "^2.1|^3.0|^4.0|^5.0",
         "symfony/http-kernel": "^2.1|^3.0|^4.0|^5.0",
@@ -41,12 +41,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Yoeunes\\Notify\\Symfony\\": "src/"
+            "Notify\\Symfony\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Yoeunes\\Notify\\Symfony\\Tests\\": "tests/"
+            "Notify\\Symfony\\Tests\\": "tests/"
         }
     },
     "config": {

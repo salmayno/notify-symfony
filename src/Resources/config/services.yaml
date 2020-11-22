@@ -1,15 +1,80 @@
 services:
-    notify:
-        class: Yoeunes\Notify\NotifyManager
+    notify.config:
+        class: Notify\Config\Config
         arguments:
             - null
 
-    notify.twig_extension:
-        class: Yoeunes\Notify\Symfony\Twig\NotifyTwigExtension
+    notify.producer:
+        class: Notify\Producer\ProducerManager
         arguments:
-            - '@notify'
+            - '@notify.config'
+
+    notify.presenter:
+        class: Notify\Presenter\PresenterManager
+
+    notify.renderer:
+        class: Notify\Renderer\RendererManager
+        arguments:
+            - '@notify.config'
+
+    notify.middleware:
+        class: Notify\Middleware\MiddlewareManager
+        arguments:
+            - []
+
+    notify.storage:
+        class: Notify\Symfony\Storage\Storage
+        arguments:
+            - '@session'
+
+    notify.filter:
+        class: Notify\Filter\FilterManager
+        arguments:
+            - '@notify.config'
+
+    notify.producer.abstract:
+        class: Notify\Producer\AbstractProducer
+        abstract: true
+        arguments:
+            - '@notify.storage'
+            - '@notify.middleware'
+
+    notify.presenter.abstract:
+        class: Notify\Presenter\AbstractPresenter
+        abstract: true
+        arguments:
+            - '@notify.storage'
+            - '@notify.filter'
+            - '@notify.renderer'
+
+    notify.presenter.html:
+        class: Notify\Presenter\Html\HtmlPresenter
+        parent: 'notify.presenter.abstract'
+
+    notify.twig_extension:
+        class: Notify\Symfony\Twig\NotifyTwigExtension
+        arguments:
+            - '@notify.presenter.html'
         public: false
         tags:
             - { name: twig.extension }
 
-    Yoeunes\Notify\NotifyManager: '@notify'
+    notify.filter_builder:
+        class: Notify\Filter\FilterBuilder
+
+    notify.filter.default:
+        class: Notify\Filter\DefaultFilter
+        arguments:
+            - '@notify.filter_builder'
+        tags:
+            - { name: 'notify.filter', alias: 'default' }
+
+    Notify\Config\Config: '@notify.config'
+    Notify\Producer\ProducerManager: '@notify.producer'
+    Notify\Presenter\PresenterManager: '@notify.presenter'
+    Notify\Renderer\RendererManager: '@notify.renderer'
+    Notify\Middleware\MiddlewareManager: '@notify.middleware'
+    Notify\Symfony\Storage\Storage: '@notify.storage'
+    Notify\Filter\FilterManager: '@notify.filter'
+    Notify\Filter\DefaultFilter: '@notify.filter.default'
+    Notify\Filter\FilterBuilder: '@notify.filter_builder'

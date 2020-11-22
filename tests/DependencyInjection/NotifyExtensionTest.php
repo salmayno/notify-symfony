@@ -1,11 +1,11 @@
 <?php
 
-namespace Yoeunes\Notify\Symfony\Tests\DependencyInjection;
+namespace Notify\Symfony\Tests\DependencyInjection;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Yoeunes\Notify\Symfony\DependencyInjection\NotifyExtension;
-use Yoeunes\Notify\Symfony\NotifyBundle;
+use Notify\Symfony\DependencyInjection\NotifyExtension;
+use Notify\Symfony\NotifyBundle;
 
 final class NotifyExtensionTest extends TestCase
 {
