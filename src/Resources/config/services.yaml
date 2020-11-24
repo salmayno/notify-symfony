@@ -20,7 +20,7 @@ services:
     notify.middleware:
         class: Notify\Middleware\MiddlewareManager
         arguments:
-            - []
+            - '@notify.config'
 
     notify.storage:
         class: Notify\Symfony\Storage\Storage

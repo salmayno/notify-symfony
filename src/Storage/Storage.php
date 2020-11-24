@@ -3,6 +3,7 @@
 namespace Notify\Symfony\Storage;
 
 use Notify\Envelope\Envelope;
+use Notify\Envelope\Stamp\CreatedAtStamp;
 use Notify\Envelope\Stamp\LifeStamp;
 use Notify\Envelope\Stamp\UuidStamp;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -21,13 +22,25 @@ final class Storage implements StorageInterface
 
     public function get()
     {
-        return $this->session->get(self::ENVELOPES_NAMESPACE, []);
+        return $this->session->get(self::ENVELOPES_NAMESPACE, array());
     }
 
     public function add(Envelope $envelope)
     {
         if (null === $envelope->get('Notify\Envelope\Stamp\UuidStamp')) {
             $envelope->withStamp(new UuidStamp());
+        }
+
+        if (null === $envelope->get('Notify\Envelope\Stamp\UuidStamp')) {
+            $envelope->withStamp(new UuidStamp());
+        }
+
+        if (null === $envelope->get('Notify\Envelope\Stamp\LifeStamp')) {
+            $envelope->withStamp(new LifeStamp(1));
+        }
+
+        if (null === $envelope->get('Notify\Envelope\Stamp\CreatedAtStamp')) {
+            $envelope->withStamp(new CreatedAtStamp());
         }
 
         $envelopes = $this->get();
@@ -41,7 +54,7 @@ final class Storage implements StorageInterface
      */
     public function flush($envelopes)
     {
-        $envelopesMap = [];
+        $envelopesMap = array();
 
         foreach ($envelopes as $envelope) {
             $life = $envelope->get('Notify\Envelope\Stamp\LifeStamp')->getLife();
@@ -50,9 +63,9 @@ final class Storage implements StorageInterface
             $envelopesMap[$uuid] = $life;
         }
 
-        $store = [];
+        $store = array();
 
-        foreach ($this->session->get(self::ENVELOPES_NAMESPACE, []) as $envelope) {
+        foreach ($this->session->get(self::ENVELOPES_NAMESPACE, array()) as $envelope) {
             $uuid = $envelope->get('Notify\Envelope\Stamp\UuidStamp')->getUuid();
 
             if(isset($envelopesMap[$uuid])) {

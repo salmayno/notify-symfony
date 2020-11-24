@@ -35,10 +35,6 @@ final class Configuration implements ConfigurationInterface
                     ->ignoreExtraKeys(false)
                     ->prototype('variable')->end()
                 ->end()
-                ->arrayNode('stamps_middlewares')
-                    ->ignoreExtraKeys(false)
-                    ->prototype('variable')->end()
-                ->end()
             ->end()
         ;
 

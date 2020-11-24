@@ -25,8 +25,5 @@ final class NotifyExtension extends Extension
 
         $notifyConfig = $container->getDefinition('notify.config');
         $notifyConfig->replaceArgument(0, $config);
-
-        $notifyMiddleware = $container->getDefinition('notify.middleware');
-        $notifyConfig->replaceArgument(0, $config);
     }
 }
