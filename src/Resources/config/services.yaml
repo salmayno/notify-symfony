@@ -50,6 +50,14 @@ services:
     notify.presenter.html:
         class: Notify\Presenter\Html\HtmlPresenter
         parent: 'notify.presenter.abstract'
+        tags:
+            - { name: 'notify.presenter', alias: 'html' }
+
+    notify.presenter.json:
+        class: Notify\Presenter\Json\JsonPresenter
+        parent: 'notify.presenter.abstract'
+        tags:
+            - { name: 'notify.presenter', alias: 'json' }
 
     notify.twig_extension:
         class: Notify\Symfony\Twig\NotifyTwigExtension
