@@ -86,3 +86,5 @@ services:
     Notify\Filter\FilterManager: '@notify.filter'
     Notify\Filter\DefaultFilter: '@notify.filter.default'
     Notify\Filter\FilterBuilder: '@notify.filter_builder'
+    Notify\Presenter\Json\JsonPresenter: '@notify.presenter.json'
+    Notify\Presenter\Html\HtmlPresenter: '@notify.presenter.html'
