@@ -43,18 +43,19 @@ services:
         class: Notify\Presenter\AbstractPresenter
         abstract: true
         arguments:
+            - '@notify.config'
             - '@notify.storage'
             - '@notify.filter'
             - '@notify.renderer'
 
     notify.presenter.html:
-        class: Notify\Presenter\Html\HtmlPresenter
+        class: Notify\Presenter\Adapter\HtmlPresenter
         parent: 'notify.presenter.abstract'
         tags:
             - { name: 'notify.presenter', alias: 'html' }
 
     notify.presenter.json:
-        class: Notify\Presenter\Json\JsonPresenter
+        class: Notify\Presenter\Adapter\JsonPresenter
         parent: 'notify.presenter.abstract'
         tags:
             - { name: 'notify.presenter', alias: 'json' }
