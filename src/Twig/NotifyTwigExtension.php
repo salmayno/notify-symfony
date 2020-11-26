@@ -2,7 +2,7 @@
 
 namespace Notify\Symfony\Twig;
 
-use Notify\Presenter\Html\HtmlPresenter;
+use Notify\Presenter\Adapter\HtmlPresenter;
 use Notify\Presenter\PresenterManager;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
